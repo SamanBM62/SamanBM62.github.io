@@ -948,104 +948,104 @@ var pJS = function(tag_id, params) {
     }
   };
 
-  pJS.fn.modes.repulseParticle = function(p) {
-    if (
-      pJS.interactivity.events.onhover.enable &&
-      isInArray('repulse', pJS.interactivity.events.onhover.mode) &&
-      pJS.interactivity.status == 'mousemove'
-    ) {
-      var dx_mouse = p.x - pJS.interactivity.mouse.pos_x,
-        dy_mouse = p.y - pJS.interactivity.mouse.pos_y,
-        dist_mouse = Math.sqrt(dx_mouse * dx_mouse + dy_mouse * dy_mouse);
+  // pJS.fn.modes.repulseParticle = function(p) {
+  //   if (
+  //     pJS.interactivity.events.onhover.enable &&
+  //     isInArray('repulse', pJS.interactivity.events.onhover.mode) &&
+  //     pJS.interactivity.status == 'mousemove'
+  //   ) {
+  //     var dx_mouse = p.x - pJS.interactivity.mouse.pos_x,
+  //       dy_mouse = p.y - pJS.interactivity.mouse.pos_y,
+  //       dist_mouse = Math.sqrt(dx_mouse * dx_mouse + dy_mouse * dy_mouse);
 
-      var normVec = { x: dx_mouse / dist_mouse, y: dy_mouse / dist_mouse },
-        repulseRadius = pJS.interactivity.modes.repulse.distance,
-        velocity = 100,
-        repulseFactor = clamp(
-          1 /
-            repulseRadius *
-            (-1 * Math.pow(dist_mouse / repulseRadius, 2) + 1) *
-            repulseRadius *
-            velocity,
-          0,
-          50
-        );
+  //     var normVec = { x: dx_mouse / dist_mouse, y: dy_mouse / dist_mouse },
+  //       repulseRadius = pJS.interactivity.modes.repulse.distance,
+  //       velocity = 100,
+  //       repulseFactor = clamp(
+  //         1 /
+  //           repulseRadius *
+  //           (-1 * Math.pow(dist_mouse / repulseRadius, 2) + 1) *
+  //           repulseRadius *
+  //           velocity,
+  //         0,
+  //         50
+  //       );
 
-      var pos = {
-        x: p.x + normVec.x * repulseFactor,
-        y: p.y + normVec.y * repulseFactor
-      };
+  //     var pos = {
+  //       x: p.x + normVec.x * repulseFactor,
+  //       y: p.y + normVec.y * repulseFactor
+  //     };
 
-      if (pJS.particles.move.out_mode == 'bounce') {
-        if (pos.x - p.radius > 0 && pos.x + p.radius < pJS.canvas.w)
-          p.x = pos.x;
-        if (pos.y - p.radius > 0 && pos.y + p.radius < pJS.canvas.h)
-          p.y = pos.y;
-      } else {
-        p.x = pos.x;
-        p.y = pos.y;
-      }
-    } else if (
-      pJS.interactivity.events.onclick.enable &&
-      isInArray('repulse', pJS.interactivity.events.onclick.mode)
-    ) {
-      if (!pJS.tmp.repulse_finish) {
-        pJS.tmp.repulse_count++;
-        if (pJS.tmp.repulse_count == pJS.particles.array.length) {
-          pJS.tmp.repulse_finish = true;
-        }
-      }
+  //     if (pJS.particles.move.out_mode == 'bounce') {
+  //       if (pos.x - p.radius > 0 && pos.x + p.radius < pJS.canvas.w)
+  //         p.x = pos.x;
+  //       if (pos.y - p.radius > 0 && pos.y + p.radius < pJS.canvas.h)
+  //         p.y = pos.y;
+  //     } else {
+  //       p.x = pos.x;
+  //       p.y = pos.y;
+  //     }
+  //   } else if (
+  //     pJS.interactivity.events.onclick.enable &&
+  //     isInArray('repulse', pJS.interactivity.events.onclick.mode)
+  //   ) {
+  //     if (!pJS.tmp.repulse_finish) {
+  //       pJS.tmp.repulse_count++;
+  //       if (pJS.tmp.repulse_count == pJS.particles.array.length) {
+  //         pJS.tmp.repulse_finish = true;
+  //       }
+  //     }
 
-      if (pJS.tmp.repulse_clicking) {
-        var repulseRadius = Math.pow(
-          pJS.interactivity.modes.repulse.distance / 6,
-          3
-        );
+  //     if (pJS.tmp.repulse_clicking) {
+  //       var repulseRadius = Math.pow(
+  //         pJS.interactivity.modes.repulse.distance / 6,
+  //         3
+  //       );
 
-        var dx = pJS.interactivity.mouse.click_pos_x - p.x,
-          dy = pJS.interactivity.mouse.click_pos_y - p.y,
-          d = dx * dx + dy * dy;
+  //       var dx = pJS.interactivity.mouse.click_pos_x - p.x,
+  //         dy = pJS.interactivity.mouse.click_pos_y - p.y,
+  //         d = dx * dx + dy * dy;
 
-        var force = -repulseRadius / d * 1;
+  //       var force = -repulseRadius / d * 1;
 
-        function process() {
-          var f = Math.atan2(dy, dx);
-          p.vx = force * Math.cos(f);
-          p.vy = force * Math.sin(f);
+  //       function process() {
+  //         var f = Math.atan2(dy, dx);
+  //         p.vx = force * Math.cos(f);
+  //         p.vy = force * Math.sin(f);
 
-          if (pJS.particles.move.out_mode == 'bounce') {
-            var pos = {
-              x: p.x + p.vx,
-              y: p.y + p.vy
-            };
-            if (pos.x + p.radius > pJS.canvas.w) p.vx = -p.vx;
-            else if (pos.x - p.radius < 0) p.vx = -p.vx;
-            if (pos.y + p.radius > pJS.canvas.h) p.vy = -p.vy;
-            else if (pos.y - p.radius < 0) p.vy = -p.vy;
-          }
-        }
+  //         if (pJS.particles.move.out_mode == 'bounce') {
+  //           var pos = {
+  //             x: p.x + p.vx,
+  //             y: p.y + p.vy
+  //           };
+  //           if (pos.x + p.radius > pJS.canvas.w) p.vx = -p.vx;
+  //           else if (pos.x - p.radius < 0) p.vx = -p.vx;
+  //           if (pos.y + p.radius > pJS.canvas.h) p.vy = -p.vy;
+  //           else if (pos.y - p.radius < 0) p.vy = -p.vy;
+  //         }
+  //       }
 
-        // default
-        if (d <= repulseRadius) {
-          process();
-        }
+  //       // default
+  //       if (d <= repulseRadius) {
+  //         process();
+  //       }
 
-        // bang - slow motion mode
-        // if(!pJS.tmp.repulse_finish){
-        //   if(d <= repulseRadius){
-        //     process();
-        //   }
-        // }else{
-        //   process();
-        // }
-      } else {
-        if (pJS.tmp.repulse_clicking == false) {
-          p.vx = p.vx_i;
-          p.vy = p.vy_i;
-        }
-      }
-    }
-  };
+  //       // bang - slow motion mode
+  //       // if(!pJS.tmp.repulse_finish){
+  //       //   if(d <= repulseRadius){
+  //       //     process();
+  //       //   }
+  //       // }else{
+  //       //   process();
+  //       // }
+  //     } else {
+  //       if (pJS.tmp.repulse_clicking == false) {
+  //         p.vx = p.vx_i;
+  //         p.vy = p.vy_i;
+  //       }
+  //     }
+  //   }
+  // };
 
   pJS.fn.modes.grabParticle = function(p) {
     if (
@@ -1450,29 +1450,31 @@ Object.deepExtend = function(destination, source) {
   return destination;
 };
 
-window.requestAnimFrame = (function() {
-  return (
-    window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.oRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    function(callback) {
-      window.setTimeout(callback, 1000 / 60);
-    }
-  );
-})();
+// window.requestAnimFrame = (function() {
+//   return (
+//     window.requestAnimationFrame ||
+//     window.webkitRequestAnimationFrame ||
+//     window.mozRequestAnimationFrame ||
+//     window.oRequestAnimationFrame ||
+//     window.msRequestAnimationFrame ||
+//     function(callback) {
+//       window.setTimeout(callback, 1000 / 60);
+//     }
+//   );
+// })();
 
-window.cancelRequestAnimFrame = (function() {
-  return (
-    window.cancelAnimationFrame ||
-    window.webkitCancelRequestAnimationFrame ||
-    window.mozCancelRequestAnimationFrame ||
-    window.oCancelRequestAnimationFrame ||
-    window.msCancelRequestAnimationFrame ||
-    clearTimeout
-  );
-})();
+// window.cancelRequestAnimFrame = (function() {
+//   return (
+//     window.cancelAnimationFrame ||
+//     window.webkitCancelRequestAnimationFrame ||
+//     window.mozCancelRequestAnimationFrame ||
+//     window.oCancelRequestAnimationFrame ||
+//     window.msCancelRequestAnimationFrame ||
+//     clearTimeout
+//   );
+// })();
+
+
 
 function hexToRgb(hex) {
   // By Tim Down - http://stackoverflow.com/a/5624139/3493650
@@ -1564,3 +1566,74 @@ window.particlesJS.load = function(tag_id, path_config_json, callback) {
   };
   xhr.send();
 };
+document.addEventListener("DOMContentLoaded", function () {
+  var c = document.querySelector("#landing #matrix");
+  
+  // Check if the canvas element was found
+  if (c) {
+    // Perform actions with the canvas element here
+    var ctx = c.getContext("2d");
+    var animationInterval; // Add this line to initialize the variable
+
+function updateCanvasSize() {
+    // Update canvas size
+    c.height = window.innerHeight;
+    c.width = window.innerWidth;
+
+    // Recalculate the number of columns based on the new canvas size
+    columns = c.width / font_size;
+
+    // Recreate the drops array with updated column count
+    drops = [];
+    for (var x = 0; x < columns; x++)
+        drops[x] = 1;
+}
+
+// Initialize canvas size
+updateCanvasSize();
+
+var matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+matrix = matrix.split("");
+
+var font_size = 10;
+var columns = c.width / font_size;
+var drops = [];
+
+for (var x = 0; x < columns; x++)
+    drops[x] = 1;
+
+function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+    ctx.fillRect(0, 0, c.width, c.height);
+
+    ctx.fillStyle = "#f4427d";
+    ctx.font = font_size + "px arial";
+
+    for (var i = 0; i < drops.length; i++) {
+        var text = matrix[Math.floor(Math.random() * matrix.length)];
+        ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+        if (drops[i] * font_size > c.height && Math.random() > 0.975)
+            drops[i] = 0;
+
+        drops[i]++;
+    }
+}
+
+// Initial call to draw
+animationInterval = setInterval(draw, 35); // Initialize animationInterval
+
+// Handle window resize events
+window.addEventListener("resize", function () {
+    // Clear the interval to stop the animation
+    clearInterval(animationInterval);
+
+    // Update canvas size and recreate the animation interval
+    updateCanvasSize();
+    animationInterval = setInterval(draw, 35);
+});
+  } else {
+    console.log("Canvas element not found");
+  }
+});
+
