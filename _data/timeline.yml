@@ -17,45 +17,38 @@
 #     - tag: Rails
 #   timeline-side: right
 
-- title: airbnb
-  title-url: https://example.com/
-  date: Sep 2019 - Present
-  subtitle: Fullstack Developer
+- title: Azad university south branch
+  date: Sep 2017 - Aug 2022
+  subtitle: B.A. Software engineer
   tags:
-    - tag: React
-    - tag: Javascript
-    - tag: Ruby
-    - tag: Rails
+    - tag: "Overall score: 16.89 out of 20"
   timeline-side: right
 
-- title: Google
-  title-url: https://example.com/
-  date: Mar 2019 - Sep 2019
-  subtitle: Software Engineer as Intern
+- title: Teacher assistant
+  date: Feb 2021 - June 2021
+  subtitle: Data structures
   tags:
-    - tag: Flutter
-    - tag: Dart
-    - tag: Keycloak
+    - tag: c/c++
+    - tag: c#
   timeline-side: right
 
-- title: Super University
-  title-url: https://example.com/
-  date: 2017 - 2019
-  subtitle: M.Sc. Computer Science
+- title: FD Eshragh · Part-time
+  date: Nov 2020 - Mar 2022
+  subtitle: "Software developer and security designer."
+  descr: "My job was to develop windows applications and also a firmware for a hardware. Additionally, I had to design network security protocols for the firmware and the applications."
+  tags:
+    - tag: C
+    - tag: C++14
+    - tag: Makefile
+    - tag: Qt
   timeline-side: left
 
-- title: Facebook
-  title-url: https://example.com/
-  date: Sep 2017 - Mar 2019
-  subtitle: Front-End Developer as Intern
+- title: AI-Bridge · Freelance
+  date: Feb 2022 - May 2022
+  subtitle: "Software developer."
+  descr: "Developed an Installer for an AI application. Also, programmed a network application to receive data and feed it to the application."
   tags:
-    - tag: React
-    - tag: Node
-    - tag: Javascript
-  timeline-side: right
-
-- title: Super University
-  title-url: https://example.com/
-  date: 2014 - 2017
-  subtitle: B.A. Computer Science
+    - tag: Qt installer
+    - tag: Python
   timeline-side: left
+

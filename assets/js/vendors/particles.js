@@ -1603,10 +1603,10 @@ for (var x = 0; x < columns; x++)
     drops[x] = 1;
 
 function draw() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+    ctx.fillStyle = "rgba(43, 45, 47, 0.04)";
     ctx.fillRect(0, 0, c.width, c.height);
 
-    ctx.fillStyle = "#f4427d";
+    ctx.fillStyle = "#54eb18";
     ctx.font = font_size + "px arial";
 
     for (var i = 0; i < drops.length; i++) {

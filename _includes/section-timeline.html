@@ -25,6 +25,9 @@
             </div>
             <div class="desc neumorphism-card" data-aos="zoom-in-right">
               {{event.subtitle}}
+            <div class="myclass">
+              {{event.descr}}
+            </div>
               {% if event.tags %}
                 <div class="tag-wrapper">
                   {% for tag in event.tags %}
