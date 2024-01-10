@@ -15,13 +15,19 @@
 
 - name: ChatApp
   descr: "A secure P2P chatting application suited for private networks. It does not store any messages and will change its key with every new connection."
+  demo: https://youtu.be/1cY09TaZeRE
+  repo: https://github.com/Mohammad-mahmoodi62/ChatApp
   tags:
     - tag: Kotlin
     - tag: Java
+    - tag: Cryptography
 
 - name: LexiQuiz
   descr: "A browser extension designed for learning new words in English. When you visit dictionary sites such as Longman a new button will appear next to the word, which you can add the word to the DataBase. Afterwords, you can take a vocabulary quiz of the added words."
+  demo: https://youtu.be/-OF-ezJ3EPI
+  repo: https://github.com/Mohammad-mahmoodi62/LexiQuiz
   tags:
     - tag: JavaScript
     - tag: Chrome Extension
+    - tag: Crawler
 
